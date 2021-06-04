@@ -278,9 +278,7 @@ litchi.plan = function(roi, output,
   dfLitchi$split = 1
   if ((totalFlightTime > max.flight.time) || (nrow(waypoints) > MAX_WAYPOINTS)) {
     indexes = seq_len(finalSize)
-    message("Checking for number of breaks")
     nBreaks = max(ceiling(totalFlightTime/max.flight.time), ceiling(nrow(waypoints)/MAX_WAYPOINTS))
-    message("Got breaks=", nBreaks)
     breaks = seq(0, flightTime[finalSize], length.out = nBreaks+1)[c(-1, -nBreaks-1)]
     endWaypointsIndex = indexes[waypoints$isCurve & (seq_len(finalSize) %% 2 == 0)]
     endWaypoints = flightTime[waypoints$isCurve & (seq_len(finalSize) %% 2 == 0)]
